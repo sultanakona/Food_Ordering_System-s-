@@ -1,16 +1,11 @@
-# 🍽️ Food Ordering System
+# 🍽️ Food Ordering System (food/)
 
-An elegant, responsive, and easy-to-use Food Ordering System — perfect for restaurants, cafes, and food delivery startups. This project lets customers browse menus, add items to a cart, place orders, and for admins to manage menu items and orders through a clean dashboard.
+An elegant, responsive, and easy-to-use Food Ordering System — perfect for restaurants, cafés, and food delivery startups. Customers can browse menus, add items to a cart, place orders, and admins can manage menu items and orders via a clean dashboard.
 
-[![Built with ❤️](https://img.shields.io/badge/built%20with-LOVE-orange.svg)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)]()
-[![Status](https://img.shields.io/badge/status-Active-brightgreen.svg)]()
-
+Built with ❤️ — License: MIT  
 Live demo: (add your demo link here)
 
----
-
-Table of Contents
+## Table of Contents
 - [About](#about)
 - [Features](#features)
 - [Screenshots](#screenshots)
@@ -27,159 +22,150 @@ Table of Contents
 - [License](#license)
 - [Contact](#contact)
 
----
-
 ## About
-Food Ordering System is a full-stack application that simulates a real-world food ordering experience. It focuses on a straightforward, delightful UI/UX with core e-commerce ordering flows — view menu, manage cart, checkout, and an admin interface to manage menu items and orders.
-
-This README is intentionally written to be adaptable — update commands, links and sections to match your repository's actual stack and scripts.
-
----
+This folder contains the user-facing PHP + MySQL implementation of the Food Ordering System. It implements core e-commerce ordering flows: browse menu, manage cart, checkout, order history, and basic admin operations (in the `admin/` folder).
 
 ## Features
 - Intuitive menu browsing with categories and search
 - Add/remove items to cart with quantity adjustments
-- Checkout flow with order summary and status
-- Admin dashboard for:
-  - Creating / updating / deleting menu items
-  - Viewing and updating order statuses
-- Mobile-first responsive design
-- Order history for repeat customers
-- Validation and helpful error messages
-
----
+- Checkout with order summary and status
+- Basic admin dashboard for managing menu items and orders
+- Mobile-first responsive design (Bootstrap-based layouts)
+- Order history for customers
+- Rating and quick-view for products
+- Contact and about pages
 
 ## Screenshots
-> Replace these placeholders with actual screenshots from your app to showcase UI.
-
-![Homepage Preview](./assets/screenshots/homepage.png)
-![Menu Detail](./assets/screenshots/menu.png)
-![Cart & Checkout](./assets/screenshots/cart.png)
-![Admin Dashboard](./assets/screenshots/admin.png)
-
----
+Replace these placeholders with actual screenshots from the app:
+- Homepage Preview
+- Menu Detail
+- Cart & Checkout
+- Admin Dashboard
 
 ## Tech Stack
-The following is a common stack used for such projects — update to reflect your implementation:
-- Frontend: React / Vue / Angular / plain HTML/CSS/JS
-- Backend: Node.js + Express
-- Database: MongoDB / PostgreSQL / MySQL
-- Authentication: JWT / Session-based (optional)
-- Styling: Tailwind CSS / Bootstrap / SASS
-- Deployment: Vercel / Netlify (frontend), Heroku / Render (backend), Docker (optional)
-
----
+- Backend: PHP (plain PHP files)
+- Database: MySQL / MariaDB (SQL file included)
+- Frontend: HTML, CSS, JavaScript, Bootstrap (or plain CSS)
+- Web server: Apache or built-in PHP server for local testing
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14+)
-- npm or yarn
-- Database (MongoDB / PostgreSQL) — running locally or via cloud provider
-- Optional: Docker
+- PHP 7.4+ (PHP 8.x recommended)
+- MySQL or MariaDB
+- Web server (Apache / Nginx) or XAMPP / MAMP / LAMP stack
+- Optional: phpMyAdmin for importing the SQL file
 
 ### Installation
-1. Clone the repo
-   git clone https://github.com/SabihaMishu/Food-Ordering-System-.git
-2. Change directory
-   cd Food-Ordering-System-
-3. Install dependencies
-   - For a combined repo:
-     npm install
-   - Or for separate frontend/backend:
-     cd backend && npm install
-     cd ../frontend && npm install
+1. Clone the repository or copy the `food/` folder into your web root:
+   - git clone https://github.com/sultanakona/Food_Ordering_System-s-.git
+   - Place the `food/` folder under your web server root (e.g., `/var/www/html/food`).
+
+2. Create a MySQL database, e.g. `food_db`.
+
+3. Import the SQL schema and seed data:
+   - From terminal:
+     - mysql -u root -p food_db < food/food_db.sql
+   - Or import `food/food_db.sql` using phpMyAdmin.
+
+4. Configure DB credentials:
+   - Search the project for the DB connection (look for `mysqli_connect`, `new mysqli`, or a `config.php`).
+   - Update host, username, password and database name accordingly.
+   - Example variables to set in your config file:
+     - DB_HOST = 'localhost'
+     - DB_NAME = 'food_db'
+     - DB_USER = 'root'
+     - DB_PASS = 'your_password'
+
+5. Ensure upload directory is writable:
+   - chmod -R 755 food/uploaded_img
+   - The web server user (www-data, apache, etc.) must have write access for uploads.
 
 ### Run Locally
-- If single server:
-  npm run dev
-- If separate:
-  # Backend
-  cd backend
-  npm run dev
-  # Frontend
-  cd ../frontend
-  npm start
-
-Open http://localhost:3000 (or configured port) to view the app.
-
----
+- Using built-in PHP server (for quick tests):
+  - php -S localhost:8000 -t food
+  - Open http://localhost:8000/home.php
+- Using XAMPP/MAMP:
+  - Place `food/` inside the server's htdocs/www directory and open http://localhost/food/home.php
 
 ## Project Structure
-A typical structure you can adapt:
+- about.php — About page
+- actions.php — Action handlers (add to cart, etc.)
+- admin/ — Admin panel and management pages
+- cart.php — Shopping cart page
+- category.php — Category listing / filtering
+- checkout.php — Checkout flow
+- components/ — Reusable components (header, footer, includes)
+- contact.php — Contact form/page
+- css/ — Stylesheets
+- food_db.sql — Database schema and seed data
+- home.php — Homepage
+- images/ — Static images used by the site
+- js/ — JavaScript files
+- login.php — User login
+- menu.php — Menu listing
+- orders.php — User orders and order history
+- product.php — Product detail page
+- profile.php — User profile
+- quick_view.php — Quick product view/modal
+- rating.php — Product rating handling
+- register.php — User registration
+- search.php — Search page
+- update_address.php — Update user address
+- update_profile.php — Update user profile
+- uploaded_img/ — User / product uploaded images
+- project images/ — Example project screenshots
 
-- /frontend — client app (React/Vue/Angular)
-  - /src
-    - /components
-    - /pages
-    - /services
-- /backend — API server (Node/Express)
-  - /controllers
-  - /models
-  - /routes
-  - /middleware
-- /assets — images/screenshots
-- README.md
-
-Adjust this section to match your repo layout.
-
----
+Adjust this list to reflect any additional files or custom structure you add.
 
 ## Usage
-- Browse the menu, filter or search items.
-- Add items to cart and proceed to checkout.
-- Use admin credentials to access the admin dashboard and manage menu/orders.
+- Browse menu and categories on the homepage or `menu.php`.
+- Click a product to view details, use Quick View for a modal preview.
+- Add items to cart and proceed to `checkout.php` to place an order.
+- Registered users can view order history in `orders.php`.
+- Admin pages (in `admin/`) allow menu and order management — secure them before public use.
 
-Tip: Include demo admin credentials or seed script details here so reviewers can try admin flows.
-
----
+Tip: Add demo admin credentials or seed data in the SQL (or a README section) so others can test admin flows easily.
 
 ## Environment Variables
-Create a `.env` file in the backend root with variables like:
-
-- PORT=5000
-- DATABASE_URL=mongodb://localhost:27017/food-ordering
-- JWT_SECRET=your_jwt_secret
-- NODE_ENV=development
-
-Make sure to never commit real secrets to the repo.
-
----
+This project uses a simple PHP config approach. You can create a `config.sample.php` with placeholders, for example:
+```php
+<?php
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', 'your_password');
+define('DB_NAME', 'food_db');
+?>
+```
+Copy to `config.php` (not tracked in VCS) and update with real values.
 
 ## Contributing
-Contributions are welcome! To contribute:
-
+Contributions are welcome! Suggested workflow:
 1. Fork the repository
-2. Create a new branch: git checkout -b feature/your-feature
-3. Commit your changes: git commit -m "Add some feature"
-4. Push to the branch: git push origin feature/your-feature
-5. Open a Pull Request and describe your changes
+2. Create a branch: git checkout -b feature/your-feature
+3. Commit changes: git commit -m "Add feature"
+4. Push branch: git push origin feature/your-feature
+5. Open a Pull Request describing your changes
 
-Please follow the code style and add tests where applicable.
-
----
+Please follow code style, validate inputs, and prefer prepared statements when adding DB code.
 
 ## Roadmap
 Planned improvements:
-- Payment gateway integration (Stripe/PayPal)
-- Real-time order tracking for customers
-- Multi-restaurant / multi-menu support
-- User profiles with saved addresses and favorites
-- Docker compose for local development
+- Payment gateway integration (Stripe / PayPal)
+- Real-time order status updates (WebSockets)
+- Save addresses and favorites in user profiles
+- Harden security: CSRF protection, input validation, prepared statements
+- Docker Compose for easier local development
+- Improved admin UI and role management
 
-If you’d like to see something added, open an issue or PR!
-
----
+If you'd like anything added, open an issue or send a PR.
 
 ## License
-This project is licensed under the MIT License — see the LICENSE file for details.
-
----
+This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details or add an MIT file in the repository root.
 
 ## Contact
-Maintained by SabihaMishu
+Maintained by: sultanakona  
+GitHub: [sultanakona](https://github.com/sultanakona)  
+Email: add-your-email@example.com
 
-- GitHub: [SabihaMishu](https://github.com/SabihaMishu)
-- Email: add-your-email@example.com
-
-Enjoy building — and bon appétit! 🍕🍜🥗
+Enjoy building — bon appétit! 🍕🍜🥗
